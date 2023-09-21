@@ -79,12 +79,12 @@ def main() -> None:
             options=(st.session_state.locale.radio_text1, st.session_state.locale.radio_text2),
             horizontal=True,
         )
-        #match role_kind:
-        #    case st.session_state.locale.radio_text1:
-        #        c2.selectbox(label=st.session_state.locale.select_placeholder2, key="role",
-        #                     options=st.session_state.locale.ai_role_options)
-        #    case st.session_state.locale.radio_text2:
-        #        c2.text_input(label=st.session_state.locale.select_placeholder3, key="role")
+        match role_kind:
+            case st.session_state.locale.radio_text1:
+                c2.selectbox(label=st.session_state.locale.select_placeholder2, key="role",
+                             options=st.session_state.locale.ai_role_options)
+            case st.session_state.locale.radio_text2:
+                c2.text_input(label=st.session_state.locale.select_placeholder3, key="role")
 
     if st.session_state.user_text:
         show_conversation()
@@ -94,14 +94,14 @@ def main() -> None:
 
 
 def run_agi():
-    #match selected_lang:
-    #    case "En":
-    #        st.session_state.locale = en
-    #    case "Ru":
-    #        st.session_state.locale = ru
-    #    case _:
+    match selected_lang:
+        case "En":
             st.session_state.locale = en
-    #st.markdown(f"<h1 style='text-align: center;'>{st.session_state.locale.title}</h1>", unsafe_allow_html=True)
+        case "Ru":
+            st.session_state.locale = ru
+        case _:
+            st.session_state.locale = en
+    st.markdown(f"<h1 style='text-align: center;'>{st.session_state.locale.title}</h1>", unsafe_allow_html=True)
     selected_footer = option_menu(
         menu_title=None,
         options=[
